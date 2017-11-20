@@ -1,0 +1,12 @@
+
+.inicio{
+	background: url("https://static.pexels.com/photos/296878/pexels-photo-296878.jpeg") no-repeat;
+	padding-top: 125px;	
+	min-height: 700px;
+	background-size: cover;
+	background-attachment: fixed; 
+}
+
+#lema{
+	font-size: 300%;
+}
