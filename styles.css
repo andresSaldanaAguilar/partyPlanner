@@ -1,6 +1,10 @@
+.navbar {
+  border-bottom: #008ed5 3px solid;
+  opacity: 0.8; 
+}
 
-.inicio{
-	background: url("https://static.pexels.com/photos/296878/pexels-photo-296878.jpeg") no-repeat;
+.login{
+	background: url("img/login.jpeg") no-repeat;
 	padding-top: 125px;	
 	min-height: 700px;
 	background-size: cover;
@@ -9,4 +13,24 @@
 
 #lema{
 	font-size: 300%;
+}
+#lema-blanco{
+	color: #fff;
+	font-size: 300%;
+}
+
+
+.inicio{
+	background: url("img/home.jpeg") no-repeat;
+	padding-top: 125px;	
+	min-height: 700px;
+	background-size: cover;
+	background-attachment: fixed; 
+}
+#reserv{
+	padding: 4%;
+}
+
+.row-space{
+	margin: 1%;
 }

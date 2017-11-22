@@ -9,7 +9,7 @@
 	<script src="scripts.js"></script>
 </head>
 
-<body onload="createDB();menuInicio()">
+<body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class=container>
             <a href="home.html" class="navbar-brand">Inicio</a>
@@ -29,10 +29,10 @@
                     </li>
                     <li class="nav-item">
                        <a href="#share-head-section" class="nav-link">Contacto</a> 
-                    </li>       
+                    </li>      
                     <li class="nav-item">
                        <a href="login.html" class="nav-link">Salir</a> 
-                    </li>                                          
+                    </li>                                           
                 </ul>
             </div>
         </div>
@@ -41,18 +41,28 @@
 	<header class="inicio">
 		<div class="container">
 			<div id="grey-overlay">
-				<div class="row align-items-center justify-content-center">
-				<!--parte izquierda, lema-->
-				<div class="col-4">
-					 <h1 id="lema-blanco"></h1>	
-				</div>
-				<!--parte derecha, login-->
-				<!--
-				<div class="col-4">
-						<div class="card border-primary text-center card-form">
 
+				<div class="row align-items-center justify-content-center" >
+					<div class="col-12">
+						<div class="card border-primary text-left card-form" id="reserv">
+							<div class="row">
+								<span class="col-3 col-sm row-space"><b>Tipo de evento</b></span>
+								<span class="col-3 col-sm row-space"><b>Fecha</b></span>
+								<span class="col-3 col-sm row-space"><b>Hora</b></span>
+								<span class="col-3 col-sm row-space"><b>Evento guardado</b></span>								
+							</div>
+							<div class="row">
+								<select class="form-control col-3 col-sm row-space"></select>
+								<input class="form-control col-3 col-sm row-space" type="date" name="">
+								<input class="form-control col-3  col-sm row-space" type="time" name="">
+								<select class="form-control col-3 col-sm row-space"></select>
+							</div>
+							<div class="card text-white bg-info text-left card-form" id="reserv">
+								<h1>Drag and drop aqui</h1>
+							</div>
 		                </div>
-					</div>-->
+					</div>
+				</div>
 				</div>
 			</div>
 	</div>
