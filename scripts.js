@@ -1,19 +1,24 @@
 var db;
+//Función para crear base de datos, se ejecuta cada vez que se cargue la páguina
 function createDB() {
 	db = openDatabase('mydb', '1.0', 'planDB', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
 	   tx.executeSql('CREATE TABLE IF NOT EXISTS USER (password, email)');
 	});
+    alert("ss");
 }
-
+//Hacemos inserción en la base de datos
 function insertDB(){
-	var password=document.getElementById("contrasenia").value;
+	var password=document.getElementById("password").value; 
 	var email=document.getElementById("email").value;
-	alert(password+email);
-	db.transaction(function (tx) {
-	   tx.executeSql('INSERT INTO USER (password, email) VALUES ("'+password+'", "'+email+'")');
-	});
-	alert("insercion exitosa");
+        if(password=="" || email==""){
+            alert("Ingrese valores en los camapos de usuario");
+        }
+        else{
+            //Hacer validación para no registrar usurios ya existentes
+            db.transaction(function (tx) {tx.executeSql('INSERT INTO USER (password, email) VALUES ("'+password+'", "'+email+'")');});
+            alert("insercion exitosa");
+       }
 }
 
 function errorHandler(transaction, error)
@@ -46,7 +51,8 @@ function dataHandler(transaction, results)
 
 
 function searchDB(){
-	var password=document.getElementById("contrasenia").value;
+    alert("Hi");
+	var password=document.getElementById("password").value;
     db.transaction(
         function (transaction) {
             transaction.executeSql("SELECT * from user where password='"+password+"';",

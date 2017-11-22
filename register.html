@@ -22,17 +22,18 @@
 		                        <p>Porfavor llene los siguientes campos para completar su registro</p>
 		                        <form>
 		                            <div class="form-group">
-		                                <input type="email" class="form-control form-control-lg" placeholder="Email" required>
+		                                <input type="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
 		                            </div>
 		                            <div class="form-group">
-		                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" required>
+		                                <input type="password" class="form-control form-control-lg" id="password" placeholder="Contraseña" required>
 		                            </div>
 		                            <!--<div class="form-group">
 		                                <input type="password" class="form-control form-control-lg" placeholder="Confirmar Contraseña" required>
 		                            </div>-->
 		                            
 		                        </form>
-		                        <p class="btn btn-outline-primary btn-block" onclick="insertDB()">Entrar</p>
+		                        	<!--Botono para crear cuenta-->
+		                        	<p class="btn btn-outline-primary btn-block" onclick="insertDB()">Registrar</p>
 		                        <br>
 		                        <p>¿Ya tiene una cuenta?</p>		                     
 		                        <a class="btn btn-outline-success btn-block" href="login.html" role="button">Inicio de Sesión</a>
@@ -41,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-	</div>
+		</div>
 	</header>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
