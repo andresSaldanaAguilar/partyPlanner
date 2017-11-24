@@ -1,0 +1,13 @@
+.td_drop{
+	text-align: center;
+	width: 130px;
+	height: 80px;
+}
+#ElementosDisponibles{
+	display: inline-block;
+	padding: 10px;	
+	
+}
+#drag7{
+	float: right;
+}
