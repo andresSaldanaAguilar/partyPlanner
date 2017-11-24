@@ -7,6 +7,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="scripts.js"></script>
+
+	<script src="DragDrop/dragAndDrop.js"></script>
+	<link rel="stylesheet" type="text/css" href="DragDrop/dragAndDrop.css">
 </head>
 
 <body>
@@ -57,9 +60,56 @@
 								<input class="form-control col-3  col-sm row-space" type="time" name="">
 								<select class="form-control col-3 col-sm row-space"></select>
 							</div>
-							<div class="card text-white bg-info text-left card-form" id="reserv">
-								<h1>Drag and drop aqui</h1>
-							</div>
+
+							<div class="card text-white bg-info text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
+								<h1>Elementos Disponibles</h1>
+							<!--Propiedas:
+								draggable permite que el elemento sea arrastrable-->
+								<img class="picture" src="DragDrop/PicDragDrop/1.png" width="100px" id="drag1" draggable="true" ondragstart="drag(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/2.png" width="100px" id="drag2" draggable="true" ondragstart="drag(event)">
+								
+								<img class="picture" src="DragDrop/PicDragDrop/3.png" width="100px" id="drag3" draggable="true" ondragstart="drag(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/5.png" width="100px" id="drag5" draggable="true" ondragstart="drag(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/6.png" width="100px" id="drag6" draggable="true" ondragstart="drag(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/7.png" width="120px" id="drag7" draggable="false"ondragover="allowDrop(event)" ondrop="eliminar(event)">
+							</div>	<br>						
+							<table border="1px" align="center">
+									<tr id="table_tr">
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+									</tr>
+									<tr>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+									</tr>
+									<tr>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+									</tr>
+									<tr>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"></td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+									</tr>
+									<tr>
+										<td class="td_drop"><img class="picture" src="DragDrop/PicDragDrop/4.png" width="100px" id="drag4" draggable="false"></td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+									</tr>
+							</table>
 		                </div>
 					</div>
 				</div>
