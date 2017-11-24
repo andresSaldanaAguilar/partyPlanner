@@ -35,13 +35,13 @@ function loginHandler(transaction, results){
     }
     //Si encontramos el usuario en la bd entonces procedemos a redireccionar
     else{
-        for (var i=0; i<results.rows.length; i++) {
-            var row = results.rows.item(i);
+        //for (var i=0; i<results.rows.length; i++) {
+            var row = results.rows.item(0);
             string = string +"Usuario: "+ row['email'] + "\nContraseña: "+row['password'];
             alert(string);
             sessionStorage.setItem('nombre', row['email']);
             window.location.replace("home.html");
-        }
+        //}
     }
 
 }
