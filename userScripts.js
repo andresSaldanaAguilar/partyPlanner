@@ -4,29 +4,10 @@ var db;
 function createDB() {
 	db = openDatabase('mydb', '1.0', 'planDB', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
-	   tx.executeSql('CREATE TABLE IF NOT EXISTS USER (email varchar(30) , password varchar(10), name varchar(20));',[],null, errorHandler);
-       tx.executeSql('CREATE TABLE IF NOT EXISTS DATE (idHora integer ,rango varchar(10));',[],null, errorHandler);
-       tx.executeSql('CREATE TABLE IF NOT EXISTS TYPE_EVENT (idEvento integer,nombre varchar(10));',[],null, errorHandler);
-       tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (idEvento int primary key,email varchar(30),fecha,idHora integer,idEvento integer,nombre,FOREIGN KEY (email) REFERENCES USER (email),FOREIGN KEY (idHora) REFERENCES DATE(idHora),FOREIGN KEY (idEvento) REFERENCES TYPE_EVENT (idEvento))',[],null, errorHandler);
+	   tx.executeSql('CREATE TABLE IF NOT EXISTS USER (email,password,name);',[],null, errorHandler);
+       tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (email,fecha,hora,evento)',[],null, errorHandler);
 	});
     
-}
-function insertCatalogs(){
-    db.transaction(function (tx) {
-        //Fechas
-        tx.executeSql('INSERT INTO DATE (idHora, rango) VALUES (?, ?)',["1", "dia"],null, errorHandler);
-        tx.executeSql('INSERT INTO DATE (idHora, rango) VALUES (?, ?)',["2", "tarde"],null, errorHandler);
-        tx.executeSql('INSERT INTO DATE (idHora, rango) VALUES (?, ?)',["3", "noche"],null, errorHandler);
-        //Eventos
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["1", "XV años"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["2", "Graduacion"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["3", "Bautizo"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["4", "Boda"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["5", "Reunion Familiar"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["6", "Reunion de Negocios"],null, errorHandler);
-        tx.executeSql('INSERT INTO TYPE_EVENT (idEvento, nombre) VALUES (?, ?)',["7", "Otro"],null, errorHandler);
-
-    });
 }
 //Hacemos inserción en la base de datos con un registro
 function insertUser(){
@@ -45,35 +26,7 @@ function insertUser(){
             alert("insercion exitosa");
        }
 }
-//incersion de eventos
-function insertEvent(){
-    //var password=document.getElementById("password").value; 
-    //var email=document.getElementById("email").value;
-    //var name=document.getElementById("name").value;
-    //alert(name);
-        //if(password=="" || email==""){
-        //    alert("Ingrese valores en los campos de usuario");
-        //}
-        else{
-            //Hacer validación para no registrar usurios ya existentes
-            db.transaction(function (tx) {
-            tx.executeSql('INSERT INTO USER (password, email, name) VALUES ("'+password+'", "'+email+'", "'+name+'")');
-            });
-            alert("insercion exitosa");
-       }
-}
-function showDate(){
-    db.transaction(
-        function (transaction) {
-            transaction.executeSql("SELECT * from date;", [], dateHandler, errorHandler);
-        });
-}
-function showEventType(){
-    db.transaction(
-        function (transaction) {
-            transaction.executeSql("SELECT * from date;", [], eventTypeHandler, errorHandler);
-        });
-}
+
 //controlador de errores sintacticos
 function errorHandler(transaction, error){
     alert('Oops.  Error was '+error.message+' (Code '+error.code+')');
@@ -92,13 +45,10 @@ function loginHandler(transaction, results){
             string = string +"Usuario: "+ row['email'] + "\nContraseña: "+row['password'];
             alert(string);
             sessionStorage.setItem('nombre', row['name']);
+            sessionStorage.setItem('email', row['email']);
             window.location.replace("home.html");
         //}
     }
-}
-//controlador de date
-function dateHandler(transaction, results){
-    var btn=document.createElement("Button");
 }
 
 //buscador de usuarios en la bd
@@ -122,15 +72,74 @@ function dropDatabase(){
     db.transaction(
     function (transaction) {
             transaction.executeSql('drop table user',[],loginHandler, errorHandler);        
-             
+             transaction.executeSql('drop table event',[],loginHandler, errorHandler);
     });
     alert("database dropped");
 }
-//tira la tabla de usuario
-function dropCatalogs(){
-    db.transaction(
-    function (transaction) {      
-            transaction.executeSql('drop table date',[],loginHandler, errorHandler);  
-    });
-    alert("catalogs dropped");
+/* eventos */
+
+//controlador de platillos que se muestran
+function showMenu(){
+    var myNode = document.getElementById("event");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+
+    var horario=document.getElementById("hour").value;
+
+    if(horario=="dia"){
+        var opt = document.createElement("option");
+        var textnode = document.createTextNode("Omelette a la Francesa");     
+        opt.appendChild(textnode);         
+        opt.setAttribute("id", "1");     
+        document.getElementById("event").appendChild(opt);
+
+        var opt2 = document.createElement("option");
+        var textnode2 = document.createTextNode("Chilaquiles con milanesa");
+        opt2.appendChild(textnode2);         
+        opt2.setAttribute("id", "2");     
+        document.getElementById("event").appendChild(opt2);
+    }
+    else if(horario=="tarde"){
+        var opt = document.createElement("option");
+        var textnode = document.createTextNode("Milanesa a la vinagreta");     
+        opt.appendChild(textnode); 
+        opt.setAttribute("id", "1");          
+        document.getElementById("event").appendChild(opt);
+
+        var opt2 = document.createElement("option");
+        var textnode2 = document.createTextNode("Pollo envinado");
+        opt2.appendChild(textnode2);      
+        opt2.setAttribute("id", "2");        
+        document.getElementById("event").appendChild(opt2);
+    }
+    else if(horario=="noche"){
+        var opt = document.createElement("option");
+        var textnode = document.createTextNode("Trufa escarchada");     
+        opt.appendChild(textnode);   
+        opt.setAttribute("id", "1");        
+        document.getElementById("event").appendChild(opt);
+
+        var opt2 = document.createElement("option");
+        var textnode2 = document.createTextNode("Frijoles");
+        opt2.appendChild(textnode2);
+        opt2.setAttribute("id", "2");          
+        document.getElementById("event").appendChild(opt2);
+    }    
+}
+
+//incersion de eventos
+function insertEvent(){
+    var evento=document.getElementById("typeEvent").value;
+    var fecha=document.getElementById("date").value;
+    var horario= document.getElementById("hour").value;
+    var platillo= document.getElementById("event").value;
+    var invitado=document.getElementById("invitado").value;
+    var email = sessionStorage.getItem('email');
+
+    db.transaction(function (tx) {
+            tx.executeSql('INSERT INTO EVENT (email,fecha,hora,evento) VALUES ("'+email+'", "'+fecha+'", "'+horario+'", "'+evento+'")',[],null, errorHandler);
+        });
+
+    alert("insercion exitosa: "+evento+" "+fecha+" "+horario+" "+platillo+" "+invitado);
 }

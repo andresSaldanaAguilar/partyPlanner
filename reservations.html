@@ -7,12 +7,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="scripts.js"></script>
+	<script src="userScripts.js"></script>
 
 	<script src="DragDrop/dragAndDrop.js"></script>
 	<link rel="stylesheet" type="text/css" href="DragDrop/dragAndDrop.css">
 </head>
 
-<body>
+<body onload="showMenu();createDB()">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class=container>
             <a href="home.html" class="navbar-brand">Inicio</a>
@@ -51,14 +52,26 @@
 							<div class="row">
 								<span class="col-6 col-sm row-space"><b>Tipo de evento</b></span>
 								<span class="col-6 col-sm row-space"><b>Fecha</b></span>
-								<span class="col-3 col-sm row-space"><b>Hora</b></span>
-								<span class="col-3 col-sm row-space"><b>Evento guardado</b></span>								
+								<span class="col-3 col-sm row-space"><b>Horario</b></span>
+															
 							</div>
 							<div class="row">
-								<select class="form-control col-3 col-sm row-space" id="typeEvent"></select>
+								<select class="form-control col-3 col-sm row-space" id="typeEvent">
+									<option value="15anios">XV Años</option>
+									<option value="graduacion">Graduacion</option>
+									<option value="bautizo">Bautizo</option>
+									<option value="boda">Boda</option>
+									<option value="reunionFam">Reunion Familiar</option>
+									<option value="reunionNeg">Reunion Negocios</option>
+									<option value="otros">Otros</option>
+								</select>
 								<input class="form-control col-3 col-sm row-space" type="date" id="date">
-								<input class="form-control col-3  col-sm row-space" type="time" name="">
-								<select class="form-control col-3 col-sm row-space"></select>
+								<select class="form-control col-3 col-sm row-space" id="hour" onmouseout="showMenu()">
+									<option value="dia">Día</option>
+									<option value="tarde">Tarde</option>
+									<option value="noche">Noche</option>
+								</select>
+								
 							</div>
 
 							<div class="card text-white bg-info text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
@@ -115,6 +128,17 @@
 				</div>
 				</div>
 			</div>
+
+			<div class="card text-white bg-info col-3">
+				<select class="form-control col-3 col-sm row-space" id="event">
+					<!--<option value="omelette">Omelette Fránces</option>
+					<option value="milanesa">Milanesa a la vinagreta</option>
+					<option value="trufa">Trufa escarchada</option>-->
+				</select>
+				<input type="text" id="invitado" class="form-control" placeholder="Nombre invitado">
+				<button onclick="insertEvent()">evento</button>
+			</div>
+			
 	</div>
 	</header>
 
