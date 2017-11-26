@@ -9,7 +9,7 @@ function createDB() {
 }
 //Hacemos inserción en la base de datos con un registro
 function insertDB(){
-	var password=document.getElementById("password").value; 
+	var password=document.getElementById("password").value;
 	var email=document.getElementById("email").value;
         if(password=="" || email==""){
             alert("Ingrese valores en los camapos de usuario");
@@ -46,7 +46,7 @@ function loginHandler(transaction, results){
 
 }
 //buscador de usuarios en la bd
-function searchUser(){   
+function searchUser(){
 	var password=document.getElementById("password").value;
     var email=document.getElementById("email").value;
     db.transaction(

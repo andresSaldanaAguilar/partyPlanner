@@ -7,11 +7,11 @@ function createDB() {
 	   tx.executeSql('CREATE TABLE IF NOT EXISTS USER (email,password,name);',[],null, errorHandler);
        tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (email,fecha,hora,evento)',[],null, errorHandler);
 	});
-    
+
 }
 //Hacemos inserción en la base de datos con un registro
 function insertUser(){
-	var password=document.getElementById("password").value; 
+	var password=document.getElementById("password").value;
 	var email=document.getElementById("email").value;
     var name=document.getElementById("name").value;
     alert(name);
@@ -52,7 +52,7 @@ function loginHandler(transaction, results){
 }
 
 //buscador de usuarios en la bd
-function searchUser(){   
+function searchUser(){
 	var password=document.getElementById("password").value;
     var email=document.getElementById("email").value;
     db.transaction(
@@ -65,13 +65,13 @@ function searchUser(){
 //muestra la informacion del inicio
 function menuInicio(){
     var data = sessionStorage.getItem('nombre');
-    document.getElementById("lema-blanco").innerHTML="Hola "+data+" ,que quieres hacer hoy??";
+    document.getElementById("lema-blanco").innerHTML="Hola "+data+", esperamos que estes teniendo un buen día.";
 }
 //tira la tabla de usuario
 function dropDatabase(){
     db.transaction(
     function (transaction) {
-            transaction.executeSql('drop table user',[],loginHandler, errorHandler);        
+            transaction.executeSql('drop table user',[],loginHandler, errorHandler);
              transaction.executeSql('drop table event',[],loginHandler, errorHandler);
     });
     alert("database dropped");
@@ -89,43 +89,43 @@ function showMenu(){
 
     if(horario=="dia"){
         var opt = document.createElement("option");
-        var textnode = document.createTextNode("Omelette a la Francesa");     
-        opt.appendChild(textnode);         
-        opt.setAttribute("id", "1");     
+        var textnode = document.createTextNode("Omelette a la Francesa");
+        opt.appendChild(textnode);
+        opt.setAttribute("id", "1");
         document.getElementById("event").appendChild(opt);
 
         var opt2 = document.createElement("option");
         var textnode2 = document.createTextNode("Chilaquiles con milanesa");
-        opt2.appendChild(textnode2);         
-        opt2.setAttribute("id", "2");     
+        opt2.appendChild(textnode2);
+        opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
     }
     else if(horario=="tarde"){
         var opt = document.createElement("option");
-        var textnode = document.createTextNode("Milanesa a la vinagreta");     
-        opt.appendChild(textnode); 
-        opt.setAttribute("id", "1");          
+        var textnode = document.createTextNode("Milanesa a la vinagreta");
+        opt.appendChild(textnode);
+        opt.setAttribute("id", "1");
         document.getElementById("event").appendChild(opt);
 
         var opt2 = document.createElement("option");
         var textnode2 = document.createTextNode("Pollo envinado");
-        opt2.appendChild(textnode2);      
-        opt2.setAttribute("id", "2");        
+        opt2.appendChild(textnode2);
+        opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
     }
     else if(horario=="noche"){
         var opt = document.createElement("option");
-        var textnode = document.createTextNode("Trufa escarchada");     
-        opt.appendChild(textnode);   
-        opt.setAttribute("id", "1");        
+        var textnode = document.createTextNode("Trufa escarchada");
+        opt.appendChild(textnode);
+        opt.setAttribute("id", "1");
         document.getElementById("event").appendChild(opt);
 
         var opt2 = document.createElement("option");
         var textnode2 = document.createTextNode("Frijoles");
         opt2.appendChild(textnode2);
-        opt2.setAttribute("id", "2");          
+        opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
-    }    
+    }
 }
 
 //incersion de eventos

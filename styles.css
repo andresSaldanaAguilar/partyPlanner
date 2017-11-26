@@ -1,14 +1,14 @@
 .navbar {
   border-bottom: #008ed5 3px solid;
-  opacity: 0.8; 
+  opacity: 0.8;
 }
 
 .login{
 	background: url("img/login.jpeg") no-repeat;
-	padding-top: 125px;	
-	min-height: 700px;
+	padding-top: 125px;
+	min-height: 614px;
 	background-size: cover;
-	background-attachment: fixed; 
+	background-attachment: fixed;
 }
 
 #lema{
@@ -19,13 +19,12 @@
 	font-size: 300%;
 }
 
-
 .inicio{
-	background: url("img/home.jpeg") no-repeat;
-	padding-top: 125px;	
-	min-height: 700px;
+	background: url("img/city.jpeg") no-repeat;
+	padding-top: 125px;
+	min-height: 614px;
 	background-size: cover;
-	background-attachment: fixed; 
+	background-attachment: fixed;
 }
 #reserv{
 	padding: 4%;
