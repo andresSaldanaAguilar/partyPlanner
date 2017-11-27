@@ -1,7 +1,7 @@
 .td_drop{
 	text-align: center;
 	width: 130px;
-	height: 80px;
+	height: 80px;    
 }
 #ElementosDisponibles{
 	display: inline-block;
@@ -11,3 +11,39 @@
 #drag7{
 	float: right;
 }
+.ventana{
+	width: 100%;
+	height: 100%;
+	color: #FFF;
+	position: fixed;
+	background-image: url(PicDragDrop/FondoMesa.png);
+	top: 0;
+	left: 0;
+		display: none;
+}
+.form{
+	width: 300px;
+	height: 300px;
+	padding: 25px;
+	background-color: #FFF;
+	color: #666;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin-left: -175px;
+	margin-top: -175px;
+}
+.ventana button{
+	margin: auto;
+		margin-top: 20px;
+		margin-left: 85px;
+}
+
+#Pista{
+	width: 670px;
+	height: 420px;
+		display:block;
+		margin:auto;
+	margin-top: -410px;
+}
+

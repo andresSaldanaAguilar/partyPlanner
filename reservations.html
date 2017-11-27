@@ -8,12 +8,16 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="scripts.js"></script>
 	<script src="userScripts.js"></script>
+	<script src="session.js"></script>
 
 	<script src="DragDrop/dragAndDrop.js"></script>
 	<link rel="stylesheet" type="text/css" href="DragDrop/dragAndDrop.css">
-</head>
 
-<body onload="showMenu();createDB()">
+	<script type="text/javascript" src="DragDrop/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class=container>
             <a href="home.html" class="navbar-brand">Inicio</a>
@@ -23,20 +27,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto"> <!--esto hace que aparezca en el lado derecho-->
                     <li class="nav-item">
-                       <a href="aboutus.html" class="nav-link">Quienes somos</a> 
+                       <a href="reservations.html" class="nav-link">Reservaciones</a>
                     </li>
                     <li class="nav-item">
-                       <a href="#explore-head-section" class="nav-link">Nuestro menu</a> 
+                       <a href="login.html" class="nav-link" onclick="closeSession()">Salir</a>
                     </li>
-                    <li class="nav-item">
-                       <a href="reservations.html" class="nav-link">Reservaciones</a> 
-                    </li>
-                    <li class="nav-item">
-                       <a href="#share-head-section" class="nav-link">Contacto</a> 
-                    </li>      
-                    <li class="nav-item">
-                       <a href="login.html" class="nav-link">Salir</a> 
-                    </li>                                           
                 </ul>
             </div>
         </div>
@@ -45,16 +40,15 @@
 	<header class="inicio">
 		<div class="container">
 			<div id="grey-overlay">
-
 				<div class="row align-items-center justify-content-center" >
 					<div class="col-12">
 						<div class="card border-primary text-left card-form" id="reserv">
 							<div class="row">
 								<span class="col-6 col-sm row-space"><b>Tipo de evento</b></span>
 								<span class="col-6 col-sm row-space"><b>Fecha</b></span>
-								<span class="col-3 col-sm row-space"><b>Horario</b></span>
-															
+								<span class="col-3 col-sm row-space"><b>Horario</b></span>															
 							</div>
+
 							<div class="row">
 								<select class="form-control col-3 col-sm row-space" id="typeEvent">
 									<option value="15anios">XV Años</option>
@@ -70,80 +64,113 @@
 									<option value="dia">Día</option>
 									<option value="tarde">Tarde</option>
 									<option value="noche">Noche</option>
-								</select>
-								
+								</select>								
 							</div>
 
 							<div class="card text-white bg-info text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
 								<h1>Elementos Disponibles</h1>
 							<!--Propiedas:
 								draggable permite que el elemento sea arrastrable-->
-								<img class="picture" src="DragDrop/PicDragDrop/1.png" width="100px" id="drag1" draggable="true" ondragstart="drag(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/1.png" width="100px" id="drag1" draggable="true" ondragstart="drag(event)" onclick="openVentana()">
 								<img class="picture" src="DragDrop/PicDragDrop/2.png" width="100px" id="drag2" draggable="true" ondragstart="drag(event)">
 								
 								<img class="picture" src="DragDrop/PicDragDrop/3.png" width="100px" id="drag3" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/5.png" width="100px" id="drag5" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/6.png" width="100px" id="drag6" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/7.png" width="120px" id="drag7" draggable="false"ondragover="allowDrop(event)" ondrop="eliminar(event)">
-							</div>	<br>						
+							</div>	<br>
 							<table border="1px" align="center">
 									<tr id="table_tr">
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="1"  ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="2" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="3" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="4" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 									</tr>
 									<tr>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" id="5" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="6" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="7" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="8" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="9" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 									</tr>
 									<tr>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" id="10" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="11" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="12" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="13" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="14" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 									</tr>
 									<tr>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"></td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" id="15" ondragover="allowDrop(event)" ondrop="clonar(event,id)"></td>
+										<td class="td_drop" id="16" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="17" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="18" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="19" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 									</tr>
 									<tr>
 										<td class="td_drop"><img class="picture" src="DragDrop/PicDragDrop/4.png" width="100px" id="drag4" draggable="false"></td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
-										<td class="td_drop" ondragover="allowDrop(event)" ondrop="clonar(event)"> </td>
+										<td class="td_drop" id="21" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="22" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="23" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="24" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 									</tr>
 							</table>
+							<!--
+							<img src="DragDrop/PicDragDrop/Pista.png"  id="Pista" draggable="true" ondragover="allowDrop(event)">
+							-->
+							<br>
+							<button onclick="ConfTable()">Reservar</button>
 		                </div>
 					</div>
 				</div>
 				</div>
-			</div>
-
-			<div class="card text-white bg-info col-3">
-				<select class="form-control col-3 col-sm row-space" id="event">
-					<!--<option value="omelette">Omelette Fránces</option>
-					<option value="milanesa">Milanesa a la vinagreta</option>
-					<option value="trufa">Trufa escarchada</option>-->
-				</select>
-				<input type="text" id="invitado" class="form-control" placeholder="Nombre invitado">
-				<button onclick="insertEvent()">evento</button>
-			</div>
-			
-	</div>
+			</div>			
+		</div>
 	</header>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<div class="ventana">
+		<div class="form">
+			<form>
+				<h2>Mesa</h2>
+				<table>
+					<tr>
+						<td>Nombre:</td>
+						<td><input type="text" placeholder="Ingrese nombre"></td>
+					</tr>
+					<tr>
+						<td>Mesero:</td>
+						<td>
+							<SELECT name="selCombo"  > 
+							<OPTION value="1">Mesero 1</OPTION>
+							<OPTION value="2">Mesero 2</OPTION>
+							<OPTION value="3">Mesero 3</OPTION>
+							<OPTION value="4">Mesero 4</OPTION> 
+							<OPTION value="5">Mesero 5</OPTION>
+							<OPTION value="6">Mesero 6</OPTION>
+							<OPTION value="7">Mesero 7</OPTION>
+							<OPTION value="8">Mesero 8</OPTION> 
+							</SELECT>	
+						</td>
+					</tr>
+					<tr>
+						<td>Comida</td>
+						<td>
+							<SELECT name="selCombo"  > 
+							<OPTION value="1">Pollito con papas</OPTION>
+							<OPTION value="2">Hamburguesas</OPTION>
+							<OPTION value="3">Spaguetti</OPTION>
+							<OPTION value="4">Pechuga rellena</OPTION> 
+							</SELECT>	
+						</td>
+					</tr>
+				</table>
+				<button>Guardar</button>			
+			</form>			
+		</div>
+	</div>
+<!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+-->	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 </body>
-
 </html>
