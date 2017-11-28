@@ -33,3 +33,8 @@
 .row-space{
 	margin: 1%;
 }
+
+#mesa{
+  opacity: 0.1;
+  background-color:blue;
+}

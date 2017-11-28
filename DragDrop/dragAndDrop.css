@@ -1,12 +1,12 @@
 .td_drop{
 	text-align: center;
 	width: 130px;
-	height: 80px;    
+	height: 80px;
 }
 #ElementosDisponibles{
 	display: inline-block;
-	padding: 10px;	
-	
+	padding: 10px;
+
 }
 #drag7{
 	float: right;
@@ -19,7 +19,7 @@
 	background-image: url(PicDragDrop/FondoMesa.png);
 	top: 0;
 	left: 0;
-		display: none;
+  display: none;
 }
 .form{
 	width: 300px;
@@ -45,4 +45,3 @@
 		margin:auto;
 	margin-top: -410px;
 }
-
