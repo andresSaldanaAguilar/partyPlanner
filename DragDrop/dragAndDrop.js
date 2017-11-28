@@ -67,3 +67,6 @@ function ConfTable(){
 function openVentana(){
 	$(".ventana").slideDown(300);
 }
+function closeVentana(){
+	$(".ventana").slideUp(300);
+}
