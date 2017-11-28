@@ -25,7 +25,7 @@ function clonar(ev,id){
 				contador += 1;
 				alert(elementoClonado.id);
 		ev.target.appendChild(elementoClonado); // Se añade el elemento clonado
-		MarcarTabla(id,elementoArrastrado.id);	
+		MarcarTabla(id,elementoArrastrado.id);
 	}
 }
 function eliminar(ev){
@@ -66,4 +66,8 @@ function ConfTable(){
 
 function openVentana(){
 	$(".ventana").slideDown(300);
+}
+
+function closeVentana(){
+	$(".ventana").slideUp(300);
 }

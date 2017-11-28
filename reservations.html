@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="DragDrop/jquery-3.2.1.min.js"></script>
 
 </head>
-<body>
+<body onload="verifySession();showMenu()">
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class=container>
@@ -46,7 +46,7 @@
 							<div class="row">
 								<span class="col-6 col-sm row-space"><b>Tipo de evento</b></span>
 								<span class="col-6 col-sm row-space"><b>Fecha</b></span>
-								<span class="col-3 col-sm row-space"><b>Horario</b></span>															
+								<span class="col-3 col-sm row-space"><b>Horario</b></span>
 							</div>
 
 							<div class="row">
@@ -64,7 +64,7 @@
 									<option value="dia">Día</option>
 									<option value="tarde">Tarde</option>
 									<option value="noche">Noche</option>
-								</select>								
+								</select>
 							</div>
 
 							<div class="card text-white bg-info text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
@@ -73,7 +73,6 @@
 								draggable permite que el elemento sea arrastrable-->
 								<img class="picture" src="DragDrop/PicDragDrop/1.png" width="100px" id="drag1" draggable="true" ondragstart="drag(event)" onclick="openVentana()">
 								<img class="picture" src="DragDrop/PicDragDrop/2.png" width="100px" id="drag2" draggable="true" ondragstart="drag(event)">
-								
 								<img class="picture" src="DragDrop/PicDragDrop/3.png" width="100px" id="drag3" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/5.png" width="100px" id="drag5" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/6.png" width="100px" id="drag6" draggable="true" ondragstart="drag(event)">
@@ -120,57 +119,54 @@
 							<img src="DragDrop/PicDragDrop/Pista.png"  id="Pista" draggable="true" ondragover="allowDrop(event)">
 							-->
 							<br>
-							<button onclick="ConfTable()">Reservar</button>
-		                </div>
+								<button onclick="ConfTable()">Reservar</button>
+		          </div>
 					</div>
 				</div>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</header>
 
-	<div class="ventana">
+	<div class="ventana" id="#mesa">
 		<div class="form">
 			<form>
 				<h2>Mesa</h2>
 				<table>
 					<tr>
 						<td>Nombre:</td>
-						<td><input type="text" placeholder="Ingrese nombre"></td>
+						<td><input type="text" placeholder="Ingrese nombres"></td>
 					</tr>
 					<tr>
 						<td>Mesero:</td>
 						<td>
-							<SELECT name="selCombo"  > 
-							<OPTION value="1">Mesero 1</OPTION>
-							<OPTION value="2">Mesero 2</OPTION>
-							<OPTION value="3">Mesero 3</OPTION>
-							<OPTION value="4">Mesero 4</OPTION> 
-							<OPTION value="5">Mesero 5</OPTION>
-							<OPTION value="6">Mesero 6</OPTION>
-							<OPTION value="7">Mesero 7</OPTION>
-							<OPTION value="8">Mesero 8</OPTION> 
-							</SELECT>	
+							<SELECT name="selCombo"  >
+								<OPTION value="1">Mesero 1</OPTION>
+								<OPTION value="2">Mesero 2</OPTION>
+								<OPTION value="3">Mesero 3</OPTION>
+								<OPTION value="4">Mesero 4</OPTION>
+								<OPTION value="5">Mesero 5</OPTION>
+								<OPTION value="6">Mesero 6</OPTION>
+								<OPTION value="7">Mesero 7</OPTION>
+								<OPTION value="8">Mesero 8</OPTION>
+							</SELECT>
 						</td>
 					</tr>
 					<tr>
 						<td>Comida</td>
 						<td>
-							<SELECT name="selCombo"  > 
-							<OPTION value="1">Pollito con papas</OPTION>
-							<OPTION value="2">Hamburguesas</OPTION>
-							<OPTION value="3">Spaguetti</OPTION>
-							<OPTION value="4">Pechuga rellena</OPTION> 
-							</SELECT>	
+							<SELECT id="event">
+								<OPTION value="1">Select</OPTION>
+							</SELECT>
 						</td>
 					</tr>
 				</table>
-				<button>Guardar</button>			
-			</form>			
+				<button onclick="closeVentana()">Guardar</button><!--nose como funciona-->
+			</form>
 		</div>
 	</div>
 <!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
--->	
+-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 </body>
 </html>
