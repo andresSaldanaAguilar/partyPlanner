@@ -1,6 +1,7 @@
 /*ev es el objeto que desencadena el evento*/
 var contador =1;
 var PosicionesTabla = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var numCuadro;
 //Especifica que datos debemos arrastrar
 function drag(ev) {
 	//Especificamos tipo de datos a mover
@@ -23,11 +24,20 @@ function clonar(ev,id){
 		var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
 			elementoClonado.id = elementoArrastrado.id +" "+contador; // Se cambia el id porque tiene que ser unico
 				contador += 1;
-				alert(elementoClonado.id);
+				//alert(elementoClonado.id);
 		ev.target.appendChild(elementoClonado); // Se añade el elemento clonado
 		MarcarTabla(id,elementoArrastrado.id);
 	}
+  guardar(ev.dataTransfer.getData("text"),id);
 }
+
+function guardar(id,posicion){
+  db.transaction(function (tx) {
+          tx.executeSql('INSERT INTO OBJECT (id,posicion) VALUES ("'+id+'", "'+posicion+'")',[],null, errorHandler);
+      });
+  alert("insercion exitosa");
+}
+
 function eliminar(ev){
 		var elementoArrastrado = document.getElementById(ev.dataTransfer.getData("text")); // Elemento arrastrado
 		elementoArrastrado.parentNode.removeChild(elementoArrastrado); // Elimina el elemento
@@ -67,13 +77,7 @@ function ConfTable(){
 function openVentana(){
 	$(".ventana").slideDown(300);
 }
-<<<<<<< HEAD
-function closeVentana(){
-	$(".ventana").slideUp(300);
-}
-=======
 
 function closeVentana(){
 	$(".ventana").slideUp(300);
 }
->>>>>>> 30fd044421f324aad5563b986a6d3a2f98dacab6

@@ -5,7 +5,8 @@ function createDB() {
 	db = openDatabase('mydb', '1.0', 'planDB', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
 	   tx.executeSql('CREATE TABLE IF NOT EXISTS USER (email,password,name);',[],null, errorHandler);
-       tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (email,fecha,hora,evento)',[],null, errorHandler);
+     tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (email,fecha,hora,evento)',[],null, errorHandler);
+		 tx.executeSql('CREATE TABLE IF NOT EXISTS OBJECT (id,posicion)',[],null, errorHandler);
 	});
 
 }
@@ -128,18 +129,53 @@ function showMenu(){
     }
 }
 
-//incersion de eventos
-function insertEvent(){
-    var evento=document.getElementById("typeEvent").value;
-    var fecha=document.getElementById("date").value;
-    var horario= document.getElementById("hour").value;
-    var platillo= document.getElementById("event").value;
-    var invitado=document.getElementById("invitado").value;
-    var email = sessionStorage.getItem('email');
+//buscador de usuarios en la bd
+function searchEvent(){
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql("SELECT * from event;",
+                [], // array of values for the ? placeholders
+                eventHandler, errorHandler);
+    });
+}
 
-    db.transaction(function (tx) {
-            tx.executeSql('INSERT INTO EVENT (email,fecha,hora,evento) VALUES ("'+email+'", "'+fecha+'", "'+horario+'", "'+evento+'")',[],null, errorHandler);
-        });
+function eventHandler(transaction, results){
+    //mostramos el boton de crear evento si no existe
+		var evento=document.getElementById("typeEvent").value;
+		var fecha=document.getElementById("date").value;
+		var horario= document.getElementById("hour").value;
+		var email = sessionStorage.getItem('email');
 
-    alert("insercion exitosa: "+evento+" "+fecha+" "+horario+" "+platillo+" "+invitado);
+		//si no hay registo, guardamos, sino, solo  actualizamos
+    if(results.rows.length==0){
+			db.transaction(function (tx) {
+							tx.executeSql('INSERT INTO EVENT (email,fecha,hora,evento) VALUES ("'+email+'", "'+fecha+'", "'+horario+'", "'+evento+'")',[],null, errorHandler);
+					});
+			alert("insercion exitosa: "+evento+" "+fecha+" "+horario);
+    }
+		else{
+
+			db.transaction(function (tx) {
+							tx.executeSql('UPDATE EVENT SET fecha="'+fecha+'",hora="'+horario+'",evento="'+evento+'" where email="'+email+'";',[],null, errorHandler);
+			});
+			alert("actualizacion exitosa: "+evento+" "+fecha+" "+horario);
+		}
+}
+
+function showEvent(){
+	db.transaction(
+			function (transaction) {
+					transaction.executeSql("SELECT * from event;",
+							[], // array of values for the ? placeholders
+							showEventHandler, null);
+	});
+}
+
+function showEventHandler(transaction, results){
+    //mostramos el boton de crear evento si no existe
+		var row = results.rows.item(0);
+		document.getElementById("typeEvent").value=row['evento'];
+		document.getElementById("date").value=row['fecha'];
+		document.getElementById("hour").value=row['hora'];
+
 }

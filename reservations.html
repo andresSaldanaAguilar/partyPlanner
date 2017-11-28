@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="DragDrop/jquery-3.2.1.min.js"></script>
 
 </head>
-<body onload="verifySession();showMenu()">
+<body onload="createDB();verifySession();showMenu();showEvent()">
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class=container>
@@ -44,12 +44,13 @@
 					<div class="col-12">
 						<div class="card border-primary text-left card-form" id="reserv">
 							<div class="row">
-								<span class="col-6 col-sm row-space"><b>Tipo de evento</b></span>
-								<span class="col-6 col-sm row-space"><b>Fecha</b></span>
+								<span class="col-3 col-sm row-space"><b>Tipo de evento</b></span>
+								<span class="col-3 col-sm row-space"><b>Fecha</b></span>
 								<span class="col-3 col-sm row-space"><b>Horario</b></span>
+								<span class="col-3 col-sm row-space"><b></b></span>
 							</div>
 
-							<div class="row">
+							<div class="row" id="inputs">
 								<select class="form-control col-3 col-sm row-space" id="typeEvent">
 									<option value="15anios">XV Años</option>
 									<option value="graduacion">Graduacion</option>
@@ -65,6 +66,7 @@
 									<option value="tarde">Tarde</option>
 									<option value="noche">Noche</option>
 								</select>
+								<button class="form-control col-3 col-sm row-space btn btn-primary" onclick="searchEvent()">Reservacion</button>
 							</div>
 
 							<div class="card text-white bg-info text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
@@ -80,7 +82,7 @@
 							</div>	<br>
 							<table border="1px" align="center">
 									<tr id="table_tr">
-										<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+										<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id);"> </td>
 										<td class="td_drop" id="1"  ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 										<td class="td_drop" id="2" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
 										<td class="td_drop" id="3" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
@@ -161,14 +163,10 @@
 						</td>
 					</tr>
 				</table>
-<<<<<<< HEAD
 				<hr>
-				<h5 onclick="closeVentana()"><u>Guardar</u></h5>			
-			</form>			
-=======
-				<button onclick="closeVentana()">Guardar</button><!--nose como funciona-->
+				<h5 onclick="closeVentana()"><u>Guardar</u></h5>
 			</form>
->>>>>>> 30fd044421f324aad5563b986a6d3a2f98dacab6
+
 		</div>
 	</div>
 <!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
