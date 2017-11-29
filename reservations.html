@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="DragDrop/jquery-3.2.1.min.js"></script>
 
 </head>
-<body onload="createDB();verifySession();showMenu();showEvent();findAll()">
+<body onload="createDB();verifySession();showMenu();showEvent();findAll()" class="reservaciones">
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <div class=container>
@@ -36,7 +36,7 @@
       </div>
   </nav>
 
-	<header class="reservaciones">
+	<header >
 		<div class="container">
 			<div id="grey-overlay">
 				<div class="row align-items-center justify-content-center" >
@@ -75,7 +75,7 @@
 								draggable permite que el elemento sea arrastrable-->
 								<img class="picture" src="DragDrop/PicDragDrop/1.png" width="100px" id="drag1" draggable="true" ondragstart="drag(event)" onclick="openVentana();Button(this);findData();findGuest()">
 								<img class="picture" src="DragDrop/PicDragDrop/2.png" width="100px" id="drag2" draggable="true" ondragstart="drag(event)">
-								<img class="picture" src="DragDrop/PicDragDrop/3.png" width="100px" id="drag3" draggable="true" ondragstart="drag(event)">
+
 								<img class="picture" src="DragDrop/PicDragDrop/5.png" width="100px" id="drag5" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/6.png" width="100px" id="drag6" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/7.png" width="120px" id="drag7" draggable="false"ondragover="allowDrop(event)" ondrop="eliminar(event)">
@@ -84,39 +84,39 @@
 									<div class="card-body text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
 										<table border="1px" align="center">
 												<tr id="table_tr">
-													<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id);"> </td>
-													<td class="td_drop" id="1"  ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="2" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="3" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="4" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+													<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="1"  ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="2" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="3" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="4" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 												</tr>
 												<tr>
-													<td class="td_drop" id="5" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="6" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="7" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="8" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="9" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+													<td class="td_drop" id="5" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="6" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="7" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="8" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="9" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 												</tr>
 												<tr>
-													<td class="td_drop" id="10" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="11" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="12" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="13" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="14" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+													<td class="td_drop" id="10" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="11" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="12" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="13" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="14" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 												</tr>
 												<tr>
-													<td class="td_drop" id="15" ondragover="allowDrop(event)" ondrop="clonar(event,id)"></td>
-													<td class="td_drop" id="16" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="17" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="18" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="19" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+													<td class="td_drop" id="15" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"></td>
+													<td class="td_drop" id="16" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="17" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="18" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="19" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 												</tr>
 												<tr>
 													<td class="td_drop"><img class="picture" src="DragDrop/PicDragDrop/4.png" width="100px" id="drag4" draggable="false"></td>
-													<td class="td_drop" id="21" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="22" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="23" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
-													<td class="td_drop" id="24" ondragover="allowDrop(event)" ondrop="clonar(event,id)"> </td>
+													<td class="td_drop" id="21" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="22" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="23" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
+													<td class="td_drop" id="24" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 												</tr>
 										</table>
 										<br>
@@ -170,7 +170,7 @@
 		</div>
 		</div>
 
-	<footer>
+	<footer class="footer">
 		<div class="border-primary bg-primary text-center card-form" style="color:#fff">
 			<small>Saldaña Aguilar Andres y Aristides Ariza Martinez   ESCOM 2017</small>
 			<small>Todos los derechos reservados</small>

@@ -26,7 +26,8 @@ function insertUser(){
             db.transaction(function (tx) {
             tx.executeSql('INSERT INTO USER (password, email, name) VALUES ("'+password+'", "'+email+'", "'+name+'")');
             });
-            alert("insercion exitosa");
+            alert("Registro exitoso");
+						window.location.replace("home.html");
        }
 }
 
@@ -46,7 +47,6 @@ function loginHandler(transaction, results){
         //for (var i=0; i<results.rows.length; i++) {
             var row = results.rows.item(0);
             string = string +"Usuario: "+ row['email'] + "\nContraseña: "+row['password'];
-            alert(string);
             sessionStorage.setItem('nombre', row['name']);
             sessionStorage.setItem('email', row['email']);
             window.location.replace("home.html");

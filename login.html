@@ -11,8 +11,8 @@
 	<script src="userScripts.js"></script>
 </head>
 
-<body onload="createDB()">
-	<header class="login">
+<body onload="createDB()" class="login">
+	<header>
 		<div class="container">
 			<div id="grey-overlay">
 				<div class="row align-items-center justify-content-center">
@@ -24,31 +24,31 @@
 				<!--parte derecha, login-->
 				<div class="col-4">
 						<div class="card border-primary text-center card-form">
-		                    <div class="card-body">
-		                        <legend><h3>Iniciar Sesión</h3></legend>
+                  <div class="card-body">
+                      <legend><h3>Iniciar Sesión</h3></legend>
 
-		                            <div class="form-group">
-		                                <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
-		                            </div>
-		                            <div class="form-group">
-		                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" required  id="password">
-		                            </div>
-		                            <!--Boton para entrar a la sesión-->
-		                            <input type="submit" class="btn btn-outline-primary btn-block"  onclick="searchUser()" value="Entrar">
-		                            <br>
+                          <div class="form-group">
+                              <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
+                          </div>
+                          <div class="form-group">
+                              <input type="password" class="form-control form-control-lg" placeholder="Contraseña" required  id="password">
+                          </div>
+                          <!--Boton para entrar a la sesión-->
+                          <input type="submit" class="btn btn-outline-primary btn-block"  onclick="searchUser()" value="Entrar">
+                          <br>
 
-								<p>¿Aun no esta registrado?</p>
-									<!--Se redirecciona a la página para entrar a la sesión-->
-		                        <a class="btn btn-outline-success btn-block" href="register.html" role="button">Registrarse</a>
-		                    </div>
-		                </div>
+					<p>¿Aun no esta registrado?</p>
+						<!--Se redirecciona a la página para entrar a la sesión-->
+                      <a class="btn btn-outline-success btn-block" href="register.html" role="button">Registrarse</a>
+                  </div>
+              </div>
 					</div>
 				</div>
 			</div>
 			<button onclick="dropDatabase()">DropData</button>
 	</div>
 	</header>
-	<footer>
+	<footer class="footer">
 		<div class="border-primary bg-primary text-center card-form" style="color:#fff">
 			<small>Saldaña Aguilar Andres y Aristides Ariza Martinez   ESCOM 2017</small>
 			<small>Todos los derechos reservados</small>

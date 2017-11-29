@@ -5,8 +5,14 @@
 
 .login{
 	background: url("img/login.jpeg") no-repeat;
-	padding-top: 100px;
-	min-height: 720px;
+	padding-top: 15%;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.register{
+	background: url("img/login.jpeg") no-repeat;
+	padding-top: 10%;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -46,4 +52,13 @@
 #mesa{
   opacity: 0.1;
   background-color:blue;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  text-align: center;
 }

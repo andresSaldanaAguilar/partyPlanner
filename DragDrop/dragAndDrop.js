@@ -215,6 +215,10 @@ function deleteGuest(who){
   findGuest();
 }
 
+function reload(){
+  location.reload();
+}
+
 //tira la tabla de objetos
 function dropDatabaseObj(){
     db.transaction(
