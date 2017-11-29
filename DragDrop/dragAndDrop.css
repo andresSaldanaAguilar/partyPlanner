@@ -14,23 +14,20 @@
 .ventana{
 	width: 100%;
 	height: 100%;
-	color: #FFF;
+	color: #ccc;
 	position: fixed;
-	background-image: url(PicDragDrop/FondoMesa.png);
+	background: rgba(56,56,56,0.4);
 	top: 0;
 	left: 0;
   display: none;
 }
 .form{
-	width: 300px;
-	height: 300px;
-	padding: 25px;
-	background-color: #FFF;
+
 	color: #666;
 	top: 50%;
 	left: 50%;
 	position: absolute;
-	margin-left: -175px;
+	margin-left: -25%;
 	margin-top: -175px;
 }
 .ventana h5{

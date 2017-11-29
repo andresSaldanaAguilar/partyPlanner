@@ -21,13 +21,13 @@
 
 .inicio{
 	background: url("img/city.jpeg") no-repeat;
-	padding-top: 125px;
+	padding-top: 90px;
 	min-height: 614px;
 	background-size: cover;
 	background-attachment: fixed;
 }
-#reserv{
-	padding: 4%;
+.card-header{
+  color: grey;
 }
 
 .row-space{
