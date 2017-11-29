@@ -5,8 +5,8 @@
 
 .login{
 	background: url("img/login.jpeg") no-repeat;
-	padding-top: 125px;
-	min-height: 614px;
+	padding-top: 100px;
+	min-height: 720px;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -21,11 +21,20 @@
 
 .inicio{
 	background: url("img/city.jpeg") no-repeat;
-	padding-top: 90px;
-	min-height: 614px;
+	padding-top: 20%;
+	min-height: 720px;
 	background-size: cover;
 	background-attachment: fixed;
 }
+
+.reservaciones{
+	background: url("img/city.jpeg") no-repeat;
+	padding-top: 100px;
+	min-height: 720px;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
 .card-header{
   color: grey;
 }
