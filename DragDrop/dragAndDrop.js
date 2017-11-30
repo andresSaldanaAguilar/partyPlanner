@@ -6,6 +6,7 @@ var posicion;
 var evnt;
 var pos;
 var email = sessionStorage.getItem('email');
+var gentemesa=0;
 
 //var numCuadro;
 //Especifica que datos debemos arrastrar
@@ -146,11 +147,23 @@ function createObj(noObj,pos){
 //insertar invitaos
 function insertGuest(){
   var nombre=document.getElementById("nombre").value;
-  db.transaction(function (tx) {
+  if(nombre==""){
+    NombrePersonaMesa();
+  }
+  else{
+      if(gentemesa>=8){
+      PersonasPorMesa(); 
+      }
+      else{
+        db.transaction(function (tx) {
           tx.executeSql('INSERT INTO GUEST (email,idPos,nombre) VALUES ("'+email+'","'+pos+'", "'+nombre+'");',[],null, errorHandler);
-      });
-  //alert("insercion exitosa");
-  findGuest();
+        });
+    //alert("insercion exitosa");
+      findGuest();
+        gentemesa=gentemesa+1;
+      }    
+  }
+
 }
 
 function findGuest(){
@@ -227,7 +240,6 @@ function dropDatabaseObj(){
             transaction.executeSql('drop table objectdata',[],null, errorHandler);
             transaction.executeSql('drop table guest',[],null, errorHandler);
     });
-    alert("database dropped");
 }
 
 function eliminar(ev){

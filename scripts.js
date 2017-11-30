@@ -31,7 +31,7 @@ function loginHandler(transaction, results){
     var string="";
     //Si no hay coincidencias en la bd no redireccionamos
     if(results.rows.length==0){
-    	alert("No hay coincidencias");
+    	NoHayRegistro();
     }
     //Si encontramos el usuario en la bd entonces procedemos a redireccionar
     else{

@@ -20,6 +20,24 @@ function showMenu(){
         opt2.appendChild(textnode2);
         opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
+        
+        var opt3 = document.createElement("option");
+        var textnode3 = document.createTextNode("Codito con crema y jamón");
+        opt3.appendChild(textnode3);
+        opt3.setAttribute("id", "3");
+        document.getElementById("event").appendChild(opt3);
+
+        var opt4 = document.createElement("option");
+        var textnode4 = document.createTextNode("Codito a la Hawaiana");
+        opt4.appendChild(textnode4);
+        opt4.setAttribute("id", "4");
+        document.getElementById("event").appendChild(opt4);
+
+        var opt5 = document.createElement("option");
+        var textnode5 = document.createTextNode("Tornillo a la Napolitana");
+        opt5.appendChild(textnode5);
+        opt5.setAttribute("id", "5");
+        document.getElementById("event").appendChild(opt5);
     }
     else if(horario=="tarde"){
         var opt = document.createElement("option");
@@ -33,6 +51,24 @@ function showMenu(){
         opt2.appendChild(textnode2);
         opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
+
+        var opt3 = document.createElement("option");
+        var textnode3 = document.createTextNode("Crema de Zanahoria");
+        opt3.appendChild(textnode3);
+        opt3.setAttribute("id", "3");
+        document.getElementById("event").appendChild(opt3);
+
+        var opt4 = document.createElement("option");
+        var textnode4 = document.createTextNode("Lomo de cerdo a la pibil");
+        opt4.appendChild(textnode4);
+        opt4.setAttribute("id", "4");
+        document.getElementById("event").appendChild(opt4);
+
+        var opt5 = document.createElement("option");
+        var textnode5 = document.createTextNode("Lomo de cerdo en adobo");
+        opt5.appendChild(textnode5);
+        opt5.setAttribute("id", "5");
+        document.getElementById("event").appendChild(opt5);
     }
     else if(horario=="noche"){
         var opt = document.createElement("option");
@@ -46,9 +82,26 @@ function showMenu(){
         opt2.appendChild(textnode2);
         opt2.setAttribute("id", "2");
         document.getElementById("event").appendChild(opt2);
+
+        var opt3 = document.createElement("option");
+        var textnode3 = document.createTextNode("Ensalada verde a la vinagreta");
+        opt3.appendChild(textnode3);
+        opt3.setAttribute("id", "3");
+        document.getElementById("event").appendChild(opt3);
+
+        var opt4 = document.createElement("option");
+        var textnode4 = document.createTextNode("Ensalada rusa");
+        opt4.appendChild(textnode4);
+        opt4.setAttribute("id", "4");
+        document.getElementById("event").appendChild(opt4);
+
+        var opt5 = document.createElement("option");
+        var textnode5 = document.createTextNode("Arroz a la jardinera");
+        opt5.appendChild(textnode5);
+        opt5.setAttribute("id", "5");
+        document.getElementById("event").appendChild(opt5);
     }
 }
-
 //buscador de usuarios en la bd
 function searchEvent(){
     db.transaction(
@@ -71,15 +124,16 @@ function eventHandler(transaction, results){
 			db.transaction(function (tx) {
 							tx.executeSql('INSERT INTO EVENT (email,fecha,hora,evento) VALUES ("'+email+'", "'+fecha+'", "'+horario+'", "'+evento+'")',[],null, errorHandler);
 					});
-			alert("insercion exitosa: "+evento+" "+fecha+" "+horario);
+            ReservacionExitosa(email);
     }
-		else{
+	else{
 
-			db.transaction(function (tx) {
-							tx.executeSql('UPDATE EVENT SET fecha="'+fecha+'",hora="'+horario+'",evento="'+evento+'" where email="'+email+'";',[],null, errorHandler);
-			});
-			alert("actualizacion exitosa: "+evento+" "+fecha+" "+horario);
-		}
+		db.transaction(function (tx) {
+						tx.executeSql('UPDATE EVENT SET fecha="'+fecha+'",hora="'+horario+'",evento="'+evento+'" where email="'+email+'";',[],null, errorHandler);
+		});
+            ActualizacionExitosa(email);
+	}
+
 }
 
 function showEventHandler(transaction, results){

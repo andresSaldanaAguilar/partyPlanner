@@ -12,7 +12,13 @@
 	<script src="eventScripts.js"></script>
 	<script src="DragDrop/dragAndDrop.js"></script>
 	<link rel="stylesheet" type="text/css" href="DragDrop/dragAndDrop.css">
-	<script type="text/javascript" src="DragDrop/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="alertifyjs/jquery.js"></script>
+		<!--Vinculos para Alertify-->
+	<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+	<link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+	<script src="alertifyjs/jquery.js"></script>
+	<script src="alertifyjs/alertify.js"></script>
+	<script src="alertifyjs/CatalogoDeMensajes.js"></script>
 
 </head>
 <body onload="createDB();verifySession();showMenu();showEvent();findAll()" class="reservaciones">
@@ -78,7 +84,8 @@
 
 								<img class="picture" src="DragDrop/PicDragDrop/5.png" width="100px" id="drag5" draggable="true" ondragstart="drag(event)">
 								<img class="picture" src="DragDrop/PicDragDrop/6.png" width="100px" id="drag6" draggable="true" ondragstart="drag(event)">
-								<img class="picture" src="DragDrop/PicDragDrop/7.png" width="120px" id="drag7" draggable="false"ondragover="allowDrop(event)" ondrop="eliminar(event)">
+								<img class="picture" src="DragDrop/PicDragDrop/7.png" width="120px" id="drag7" draggable="false" onclick="dropDatabaseObj(),reload(),LimpiamosSuReservacion()">
+
 								<br>
 							</div>
 									<div class="card-body text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
@@ -126,7 +133,6 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" name="button" onclick="dropDatabaseObj()">drop mesa</button>
 	</header>
 	<div class="ventana" id="#mesa">
 		<div class="card-group col-6 form">
@@ -136,7 +142,7 @@
 				    <h6 class="card-title">Llene los siguientes datos</h6>
 						<div class="form-group">
 							<div class="row justify-content-center">
-				    		<input class="form-control col-8" type="text" placeholder="Ingrese nombres" style="margin-right:19px;" id="nombre">
+				    		<input class="form-control col-8" type="text" placeholder="Ingrese nombre invitado" style="margin-right:19px;" id="nombre">
 								<button class="btn btn-success form-control col-2" onclick="insertGuest();">+</button>
 							</div>
 							</div>
@@ -169,15 +175,13 @@
 			</div>
 		</div>
 		</div>
-
-	<footer class="footer">
+	</div>
+<!--	<footer class="footer">
 		<div class="border-primary bg-primary text-center card-form" style="color:#fff">
 			<small>Saldaña Aguilar Andres y Aristides Ariza Martinez   ESCOM 2017</small>
 			<small>Todos los derechos reservados</small>
 		</div>
-	</footer>
-
-	</div>
+	</footer>-->
 <!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

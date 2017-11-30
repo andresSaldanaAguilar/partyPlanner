@@ -17,17 +17,16 @@ function insertUser(){
 	var password=document.getElementById("password").value;
 	var email=document.getElementById("email").value;
     var name=document.getElementById("name").value;
-    alert(name);
+
         if(password=="" || email==""){
-            alert("Ingrese valores en los campos de usuario");
+            IngreseDatosRegistro();
         }
         else{
             //Hacer validación para no registrar usurios ya existentes
             db.transaction(function (tx) {
             tx.executeSql('INSERT INTO USER (password, email, name) VALUES ("'+password+'", "'+email+'", "'+name+'")');
             });
-            alert("Registro exitoso");
-						window.location.replace("home.html");
+				window.location.replace("login.html");
        }
 }
 
@@ -40,7 +39,7 @@ function loginHandler(transaction, results){
     var string="";
     //Si no hay coincidencias en la bd no redireccionamos
     if(results.rows.length==0){
-    	alert("No hay coincidencias");
+    	NoHayRegistro();
     }
     //Si encontramos el usuario en la bd entonces procedemos a redireccionar
     else{
@@ -58,12 +57,18 @@ function loginHandler(transaction, results){
 function searchUser(){
 	var password=document.getElementById("password").value;
     var email=document.getElementById("email").value;
+    if(password=="" || email==""){
+        IngreseDatosSesion();
+    }
+    else{
     db.transaction(
         function (transaction) {
             transaction.executeSql("SELECT * from user where password='"+password+"' AND email='"+email+"';",
                 [], // array of values for the ? placeholders
                 loginHandler, errorHandler);
     });
+        
+    }
 }
 //muestra la informacion del inicio
 function menuInicio(){
