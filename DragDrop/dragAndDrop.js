@@ -156,7 +156,7 @@ function insertGuest(){
       }
       else{
         db.transaction(function (tx) {
-          tx.executeSql('INSERT INTO GUEST (email,idPos,nombre) VALUES ("'+email+'","'+pos+'", "'+nombre+'");',[],null, errorHandler);
+          tx.executeSql('INSERT INTO GUEST (id,email,idPos,nombre) VALUES (null,"'+email+'","'+pos+'", "'+nombre+'");',[],null, errorHandler);
         });
     //alert("insercion exitosa");
       findGuest();
@@ -218,6 +218,8 @@ function createGuest(nombre,posc){
   carta.appendChild(div);
 }
 
+
+
 function deleteGuest(who){
   var id=who.id;
   db.transaction(
@@ -225,6 +227,7 @@ function deleteGuest(who){
           transaction.executeSql('DELETE from guest where nombre="'+id+'";',
               [], showGuest, errorHandler);
   });
+  gentemesa--;
   findGuest();
 }
 

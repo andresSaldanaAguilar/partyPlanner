@@ -8,7 +8,7 @@ function createDB() {
      tx.executeSql('CREATE TABLE IF NOT EXISTS EVENT (email,fecha,hora,evento)',[],null, errorHandler);
 		 tx.executeSql('CREATE TABLE IF NOT EXISTS OBJECT (email,id,posicion)',[],null, errorHandler);
 		 tx.executeSql('CREATE TABLE IF NOT EXISTS OBJECTDATA (email,idPos,mesero,platillo)',[],null, errorHandler);
-		 tx.executeSql('CREATE TABLE IF NOT EXISTS GUEST (email,idPos,nombre)',[],null, errorHandler);
+		 tx.executeSql('CREATE TABLE IF NOT EXISTS GUEST (id INTEGER PRIMARY KEY,email,idPos,nombre)',[],null, errorHandler);
 	});
 
 }
