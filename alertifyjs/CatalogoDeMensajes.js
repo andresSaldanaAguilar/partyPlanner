@@ -16,11 +16,14 @@ function HagamosUnaReservacion(){
 function ReservacionExitosa(email){
 	alertify.alert('Reservación Exitosa', "Enviaremos la información de confirmación al siguiente email: "+email, function(){ alertify.message('Correo enviado'); });
 }
+function ValidaFecha(){
+	alertify.error('Espere!\nAún no ingresa una fecha.');
+}
 function ActualizacionExitosa(email){
 	alertify.alert('Actualización Exitosa', "Enviaremos la información actualizada al siguiente email: "+email, function(){ alertify.message('Correo enviado'); });
 }
 function LimpiamosSuReservacion(){
-	alert("Volvamos a empezar");
+	alertify.error("Volvamos a empezar");
 }
 function PersonasPorMesa(){
 	alertify.alert('Aviso', "Solo se permiten 8 personas por mesa.");

@@ -104,12 +104,18 @@ function showMenu(){
 }
 //buscador de usuarios en la bd
 function searchEvent(){
-    db.transaction(
-        function (transaction) {
-            transaction.executeSql('SELECT * from event where email="'+email+'";',
-                [], // array of values for the ? placeholders
-                eventHandler, errorHandler);
-    });
+        var fecha=document.getElementById("date").value;
+        if(fecha==""){
+            ValidaFecha();
+        }
+        else{
+            db.transaction(
+                function (transaction) {
+                transaction.executeSql('SELECT * from event where email="'+email+'";',
+                    [], // array of values for the ? placeholders
+                    eventHandler, errorHandler);
+            });
+        }
 }
 
 function eventHandler(transaction, results){

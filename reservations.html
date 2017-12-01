@@ -66,7 +66,7 @@
 										<option value="reunionNeg">Reunion Negocios</option>
 										<option value="otros">Otros</option>
 									</select>
-									<input class="form-control col-3 col-sm row-space" type="date" id="date">
+									<input class="form-control col-3 col-sm row-space" type="date" id="date" min="2017-12-04" max="2018-12-04" required="">
 									<select class="form-control col-3 col-sm row-space" id="hour" onmouseout="showMenu()">
 										<option value="dia">Día</option>
 										<option value="tarde">Tarde</option>
@@ -89,7 +89,7 @@
 								<br>
 							</div>
 									<div class="card-body text-left card-form" id="ElementosDisponibles" id="reserv" draggable="false" >
-										<table border="1px" align="center">
+										<table align="center">
 												<tr id="table_tr">
 													<td class="td_drop" id="0" ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
 													<td class="td_drop" id="1"  ondragover="allowDrop(event)" ondrop="clonar(event,id);reload()"> </td>
