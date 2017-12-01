@@ -42,7 +42,8 @@
 	margin-top: -410px;
 }
 table{
-	background: rgba(242,215,213,0.8);
+	background: rgba(206,172,152,0.6);
+	/*background: linear-gradient(top, black, white);*/
 	border-top: 50px;
 	border: 2px;
 
